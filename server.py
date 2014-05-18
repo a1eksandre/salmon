@@ -42,6 +42,7 @@ class WebSocketHandler(tornado.websocket.WebSocketHandler):
         listeners.remove(self)
         self.conn.close()
 
+define("port", default=8888, help="run on the given port", type=int)   
 
 app = tornado.web.Application([
     (r'/', IndexHandler),
@@ -49,5 +50,6 @@ app = tornado.web.Application([
 ])
 
 if __name__ == '__main__':
-    app.listen(8888)
+    tornado.options.parse_command_line()
+    app.listen(options.port)
     tornado.ioloop.IOLoop.instance().start()
