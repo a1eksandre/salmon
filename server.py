@@ -4,18 +4,9 @@ import tornado.web
 import sqlite3
 from datetime import datetime
 
-"""class EchoWebSocket(websocket.WebSocketHandler):
-    def open(self):
-        print 'WebSocket opened'
-
-    def on_message(self, message):
-        self.write_message(u"You said: " + message)
-
-    def on_close(self):
-        print 'WebSocket closed'
-"""
 listeners = []
 db_path = 'my.db'
+
 
 class IndexHandler(tornado.web.RequestHandler):
     @tornado.web.asynchronous
