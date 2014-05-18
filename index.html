@@ -11,23 +11,20 @@
         function connect2server() {
             ip = document.getElementById("serverip").value;
             socket = new WebSocket(ip);
-            socket.onmessage = function (event) {
-                var table = document.getElementById("inewsfeed");
-                var row = table.insertRow(-1);
-                var cell = row.insertCell(0);
-                cell.innerHTML = event.data;
-            };
-            var x = document.createElement("idisconnect");
-            x.setAttribute("type", "button"); 
-            var y = document.createElement("iconnect");
-            y.setAttribute("type", "hidden");
+            socket.onmessage = messageHandler;
         }
+
+        var messageHandler = function (event) {
+            var table = document.getElementById("inewsfeed");
+            var row = table.insertRow(-1);
+            var cell = row.insertCell(0);
+            cell.innerHTML = event.data;
+        };
 
         function send2server() {
             text = document.getElementById("mytext").value;
             socket.send(text);
         }
-
 
         function disconnect2server() {
             socket.close();
@@ -56,11 +53,7 @@
         
         <table id="inewsfeed" border="1">
             <tr><th>News Feed:</th></tr>
-            <tr><td>news 1</td></tr>
-            <tr><td>news 2</td></tr>
-            <tr><td>news 3</td></tr>
-            <tr><td>news 4</td></tr>
-            <tr><td>news 5</td></tr>
+            <tr><td>Connect to get hot news</td></tr>
         </table>
     </div>
 
