@@ -1,68 +1,111 @@
 <html>
 <head>
-	<meta charset="UTF-8"/>
+<<<<<<< HEAD
+<meta charset="UTF-8" />
 
-	<style>
-	</style>
+<style>
+</style>
 
-	<script type="text/javascript">
-		var socket = "";
+<script type="text/javascript">
+var socket = "";
+var output;
 
 		function connect2server() {
 			ip = document.getElementById("serverip").value;
 			socket = new WebSocket(ip);
-			var x = document.createElement("idisconnect");
-			x.setAttribute("type", "button"); 
-			var y = document.createElement("iconnect");
-			y.setAttribute("type", "hidden");
+			socket.onmessage=messageHandler; 
+		    output = document.getElementById("output");
 		}
+=======
+    <meta charset="UTF-8"/>
 
-		function send2server() {
-			text = document.getElementById("mytext").value;
-			socket.send(text);
-		}
+    <style>
+    </style>
 
-		socket.onmessage = function (event) {
-			var table = document.getElementById("inewsfeed");
-			var row = table.insertRow(-1);
-			var cell = row.insertCell(0);
-			cell.innerHTML = event.data;
-		}
+    <script type="text/javascript">
+        var socket = "";
 
+        function connect2server() {
+            ip = document.getElementById("serverip").value;
+            socket = new WebSocket(ip);
+            socket.onmessage = messageHandler;
+        }
+>>>>>>> c18c7d98b9de3012dc23ed11ed580002c41a5596
+
+        var messageHandler = function (event) {
+            var table = document.getElementById("inewsfeed");
+            var row = table.insertRow(-1);
+            var cell = row.insertCell(0);
+            cell.innerHTML = event.data;
+        };
+
+<<<<<<< HEAD
+		var messageHandler = function (event) {
+			var pre = document.createElement("p");
+		    pre.style.wordWrap = "break-word";
+		    pre.innerHTML = event.data;
+		    output.appendChild(pre);
+        };
 		function disconnect2server() {
 			socket.close();
 		}
+=======
+        function send2server() {
+            text = document.getElementById("mytext").value;
+            socket.send(text);
+        }
 
-	</script>
+        function disconnect2server() {
+            socket.close();
+        }
+>>>>>>> c18c7d98b9de3012dc23ed11ed580002c41a5596
+
+    </script>
 
 </head>
 
 <body>
 
+<<<<<<< HEAD
 	<div>
-		Server IP:
-		<input type="text" id="serverip" text="ws://127.0.0.1/">
+		Server IP: <input type="text" id="serverip"
+			text="ws://pc.aleksandre.net:8080/wsock/dbserver">
 		<button type="button" id="iconnect" onclick="connect2server()">დაუკავშირდი</button>
-		<button hidden type="button" id="idisconnect" onclick="disconnect2server()">განკავშირება</button>
+		<button type="button" id="idisconnect" onclick="disconnect2server()">განკავშირება</button>
 	</div>
-	<br/><br/>
+	<br /> Valid commands: get, add {text}
+	<br />
 	<div>
 		<textarea rows="5" cols="50" id="mytext"></textarea>
-		<br/>
+		<br />
 		<button type="button" id="isend" onclick="send2server()">გაგზავნე</button>
 	</div>
-	<br/><br/>
+	<br />
+	<br />
 	<div>
-		
-		<table id="inewsfeed" border="1">
-			<tr><th>News Feed:</th></tr>
-			<tr><td>news 1</td></tr>
-			<tr><td>news 2</td></tr>
-			<tr><td>news 3</td></tr>
-			<tr><td>news 4</td></tr>
-			<tr><td>news 5</td></tr>
-		</table>
-	</div>
+=======
+    <div>
+        Server IP:
+        <input type="text" id="serverip" value="ws://127.0.0.1:8888/ws">
+        <button type="button" id="iconnect" onclick="connect2server()">დაუკავშირდი</button>
+        <button hidden type="button" id="idisconnect" onclick="disconnect2server()">განკავშირება</button>
+    </div>
+    <br/><br/>
+    <div>
+        <textarea rows="5" cols="50" id="mytext"></textarea>
+        <br/>
+        <button type="button" id="isend" onclick="send2server()">გაგზავნე</button>
+    </div>
+    <br/><br/>
+    <div>
+        
+        <table id="inewsfeed" border="1">
+            <tr><th>News Feed:</th></tr>
+            <tr><td>Connect to get hot news</td></tr>
+        </table>
+    </div>
+>>>>>>> c18c7d98b9de3012dc23ed11ed580002c41a5596
 
+		<div id="output"></div>
 </body>
 </html>
