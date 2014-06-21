@@ -1,6 +1,5 @@
 <html>
 <head>
-<<<<<<< HEAD
 <meta charset="UTF-8" />
 
 <style>
@@ -16,30 +15,6 @@ var output;
 			socket.onmessage=messageHandler; 
 		    output = document.getElementById("output");
 		}
-=======
-    <meta charset="UTF-8"/>
-
-    <style>
-    </style>
-
-    <script type="text/javascript">
-        var socket = "";
-
-        function connect2server() {
-            ip = document.getElementById("serverip").value;
-            socket = new WebSocket(ip);
-            socket.onmessage = messageHandler;
-        }
->>>>>>> c18c7d98b9de3012dc23ed11ed580002c41a5596
-
-        var messageHandler = function (event) {
-            var table = document.getElementById("inewsfeed");
-            var row = table.insertRow(-1);
-            var cell = row.insertCell(0);
-            cell.innerHTML = event.data;
-        };
-
-<<<<<<< HEAD
 		var messageHandler = function (event) {
 			var pre = document.createElement("p");
 		    pre.style.wordWrap = "break-word";
@@ -49,27 +24,17 @@ var output;
 		function disconnect2server() {
 			socket.close();
 		}
-=======
         function send2server() {
             text = document.getElementById("mytext").value;
             socket.send(text);
         }
-
-        function disconnect2server() {
-            socket.close();
-        }
->>>>>>> c18c7d98b9de3012dc23ed11ed580002c41a5596
-
     </script>
-
 </head>
 
 <body>
-
-<<<<<<< HEAD
 	<div>
 		Server IP: <input type="text" id="serverip"
-			text="ws://pc.aleksandre.net:8080/wsock/dbserver">
+			value="ws://127.0.0.1:8080/wsock/dbserver">
 		<button type="button" id="iconnect" onclick="connect2server()">დაუკავშირდი</button>
 		<button type="button" id="idisconnect" onclick="disconnect2server()">განკავშირება</button>
 	</div>
@@ -82,30 +47,7 @@ var output;
 	</div>
 	<br />
 	<br />
-	<div>
-=======
-    <div>
-        Server IP:
-        <input type="text" id="serverip" value="ws://127.0.0.1:8888/ws">
-        <button type="button" id="iconnect" onclick="connect2server()">დაუკავშირდი</button>
-        <button hidden type="button" id="idisconnect" onclick="disconnect2server()">განკავშირება</button>
-    </div>
-    <br/><br/>
-    <div>
-        <textarea rows="5" cols="50" id="mytext"></textarea>
-        <br/>
-        <button type="button" id="isend" onclick="send2server()">გაგზავნე</button>
-    </div>
-    <br/><br/>
-    <div>
-        
-        <table id="inewsfeed" border="1">
-            <tr><th>News Feed:</th></tr>
-            <tr><td>Connect to get hot news</td></tr>
-        </table>
-    </div>
->>>>>>> c18c7d98b9de3012dc23ed11ed580002c41a5596
 
-		<div id="output"></div>
+	<div id="output"></div>
 </body>
 </html>
